@@ -80,7 +80,7 @@ var [firstIndex, ...rest] = rivers
 console.log(firstIndex);
 console.log(rest);
 
-// In JS, functions are objects
+// In JS, Class is a function, and functions are objects in JS
 
 class Holiday{
     constructor(destination,days){
@@ -90,7 +90,7 @@ class Holiday{
     customInfoFunction(){
         console.log(`${this.destination} will take ${this.days} days` )
     }
-
+ 
 }
 
 const trip = new Holiday('Manila', 10)
@@ -99,16 +99,17 @@ const newTrip = new Holiday('Makati', 20)
 newTrip.customInfoFunction();
 
 //subclass child
+// A subclass that extends already uses the "this" of super class
 
 class Expedition extends Holiday{
-    constructor(destination, days, gear){
-        super(destination, days);
+    constructor(destination, days, gear){// when initated, this will get the arguments here
+        super(destination, days);// this passes the argument to the parent class. The parent class will process them
         this.gear=gear
     }
     customInfoFunction(){
         //overriding
-        super.customInfoFunction()
-        console.log(`Bring your own ${this.gear.join(" and your ")}`)
+        super.customInfoFunction()//1 console log
+        console.log(`Bring your own ${this.gear.join(" and your ")}`) // 2 console log
 
     }
 }
@@ -116,3 +117,4 @@ class Expedition extends Holiday{
 const newerTrip = new Expedition('Taguig', 30, ["Sunglasses", "Lotion", "Camera"])
 newerTrip.customInfoFunction();
 //before commit
+

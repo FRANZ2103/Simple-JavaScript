@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+
+//declare a user function
+
+const profile1 ={
+  name: 'Franz Sundiam',
+  avatar: 'https://i.imgur.com/on1pNmb.jpeg',
+  imageSize:90
+};
+
 function App() {
   const [users, setUsers] = useState([]);
 
@@ -14,23 +23,34 @@ function App() {
       });
   }, []);
 
+
+function MyButton(){
+  return (
+  <button>
+    I'm a Button!
+  </button>
+  );
+}
   return (
     <div className="App">
       {
-      this.state.users.map( user => <div>{user.cell}</div>)
-      
-      
-      
-      /* <h1>User List</h1>
-      {users.length === 0 ? (
-        <p>Loading users...</p>
-      ) : (
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>{user.name}</li>
-          ))}
-        </ul>
-      )} */}
+        <>
+        <div>
+          <MyButton />
+          <h1>
+            {profile1.name}
+          </h1>
+          <img 
+          src = {profile1.avatar} 
+          alt = {'Photo of ' + profile1.name}
+          style = {{ 
+            height: profile1.imageSize,
+            width: profile1.imageSize
+            }} ></img>
+          
+          </div>
+          </>
+          }
     </div>
   );
 }

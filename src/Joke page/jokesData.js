@@ -18,5 +18,8 @@ export default [
     {
         setup: "What's the best thing about Switzerland?",
         punchline: "I don't know, but the flag is a big plus!"
+    },
+    {
+        punchline: "Just a punchline!"
     }
 ]

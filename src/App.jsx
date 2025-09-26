@@ -15,23 +15,21 @@ console.log(jokesData);
 * the jokes show up on the page again
  */
 
-const jokeElements = jokesData.map((x)=>{
-// return `Setup: ${x.setup} Punchline: ${x.punchline}`
-return <><h1 key={x.id}>Setup:{x.setup}</h1> <p key={x.id}>Punchline:{x.punchline}</p></>
-}
-)
-const punchlines = jokesData.map((x)=>{
-return 
+// const jokeElements = jokesData.map((x)=>{
+// // return `Setup: ${x.setup} Punchline: ${x.punchline}`
+// return <><h1 key={x.id}>Setup:{x.setup}</h1> <p key={x.id}>Punchline:{x.punchline}</p></>
+// }
+// )
+
+const jokeEIements = jokesData.map((joke) =>{
+  return <Joke setup={joke.setup} punchline={joke.punchline}/>
 }
 )
 
 
 createRoot(document.getElementById("root")).render(
   <>
-  <Joke
-  setup = {jokeElements}
-  // punchline = {punchlines}
-  />
+  {jokeEIements}
 
   </>
 )

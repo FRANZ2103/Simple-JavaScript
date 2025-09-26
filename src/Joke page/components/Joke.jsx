@@ -9,7 +9,7 @@ export default function Joke(props){
             {/* {props.number ? <p>{added}</p> :<p></p>}
             <h1>{props.test}</h1> 
             
-            Git acc changed*/}
+            Git acc changed test*/}
         </main>
     )
 }

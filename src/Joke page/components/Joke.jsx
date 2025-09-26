@@ -7,7 +7,9 @@ export default function Joke(props){
             <p>Punchline: {props.punchline}</p>
             <hr/>
             {/* {props.number ? <p>{added}</p> :<p></p>}
-            <h1>{props.test}</h1> */}
+            <h1>{props.test}</h1> 
+            
+            Git acc changed*/}
         </main>
     )
 }

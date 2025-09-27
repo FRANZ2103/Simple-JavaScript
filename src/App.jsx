@@ -1,43 +1,48 @@
-import { createRoot } from "react-dom/client";
-import Scratch from "./Scratch";
-import MainContent from "./travel-journal-page/components/MainContent";
-import HeaderSection from "./travel-journal-page/components/HeaderSection";
-import Contact from "./contact-card/components/Contact";
-import "./travel-journal-page/components/Journal.css"
-// import "./contact-card/components/Contact.css"
-import Joke from "./Joke page/components/Joke";
-import Entry from "./travel-journal-page/components/Entry";
-import jokesData from "./Joke page/jokesData";
-console.log(jokesData);
 /**
- *  Challenge: See if you can correctly pass the necessary props to the
-*  Joke component in the . map() (and render the jokeEIements array) so
-* the jokes show up on the page again
+ * Challenge:
+import the array of data from data. js
+map over the array to create an <Entry / > component
+for every item in the data array.
+display the array of Entry components in place of the curr
+hard-coded < Entry / > instance.
  */
+import HeaderSection from "./travel-journal-page/components/HeaderSection";
+import "./travel-journal-page/components/Journal.css"
+import Entry from "./travel-journal-page/components/Entry";
+// const dataPath = "src\travel-journal-page\data folder\data.js"
+import Data from "./travel-journal-page/data folder/data.js"
+import { createRoot } from "react-dom/client";
 
-// const jokeElements = jokesData.map((x)=>{
-// // return `Setup: ${x.setup} Punchline: ${x.punchline}`
-// return <><h1 key={x.id}>Setup:{x.setup}</h1> <p key={x.id}>Punchline:{x.punchline}</p></>
-// }
-// )
+const journalData = Data.map((jData)=>{
+  return(
+    <>
+    <Entry
+    imageProps = {jData.img}
+    title = {jData.title}
+    country = {jData.country}
+    googleMapsLink = {jData.googleMapsLink}
+    dates = {jData.dates}
+    text = {jData.text}
 
-const jokeEIements = jokesData.map((joke) =>{
-  return <Joke setup={joke.setup} punchline={joke.punchline}/>
-}
-)
-
+ /></>
+  )
+})
 
 createRoot(document.getElementById("root")).render(
   <>
-  {jokeEIements}
-
+    <HeaderSection/>
+  {journalData}
   </>
 )
 
-export default App
+export default App;
 
- {/* <HeaderSection
- />
+
+
+/*export default function App(){
+  return(
+<>
+ <HeaderSection/>
  <Entry
     imageProps = {
                   {
@@ -52,4 +57,7 @@ export default App
     text = "Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
 
  />
-   */}
+ </>
+  )
+  }
+  */

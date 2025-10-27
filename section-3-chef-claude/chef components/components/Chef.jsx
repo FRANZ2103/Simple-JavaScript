@@ -22,6 +22,7 @@ export default function Chef(){
                 <button className="add-ingredient-btn">Add Ingredient</button>
                 <label>
                     <textarea name="description"></textarea>
+                    {/* Text area not relevant */}
                 </label>
             </form>
            
@@ -31,3 +32,4 @@ export default function Chef(){
         </main>
     )
 }
+

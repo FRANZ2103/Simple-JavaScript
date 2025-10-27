@@ -1,49 +1,30 @@
 import { useState } from "react";
 import React from "react";
 export default function Chef(){
-   const [ingredients,setIngredients] = React.useState([])
+   const [ingredients,setIngredients] = React.useState(["Eggplant"])
    const listedIngredients = ingredients.map((ingredient) =>(
         <li key={ingredient}> {ingredient} </li>
     ))
 
-    function handleClick(){
-        return
-    }
 
-    function handleSubmit(event){ 
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
+    function addIngredient(formData){ 
         const fieldIngredient = formData.get("ingredient")
+        const description= formData.get("description")
         setIngredients(()=>[...ingredients,fieldIngredient])
-
+        console.log(description)
        }
-       function signUp(formData){
-        const email = formData.get("email")
-        const password = formData.get("password")
-        console.log(email + " " + password)
-       }
-
+      
        
     return(
         <main>
-            <form className="input-section" onSubmit={handleSubmit}>
+            <form className="input-section" action={addIngredient}>
                 <input className="input-field" type="text" placeholder="e.g. oregano" name="ingredient"/>
                 <button className="add-ingredient-btn">Add Ingredient</button>
+                <label>
+                    <textarea name="description"></textarea>
+                </label>
             </form>
-            <section>
-                <h1>Signup Form</h1>
-                <form action={signUp}>
-                    <label> Email: 
-                        <input type="email" name="email" placeholder="kirstenfaith@gmail.com"/>
-                    </label>
-                    <br/>
-                    <label>Password: 
-                        <input type="password" name="password"/>
-                    </label>
-                    <button>Submit</button>
-
-                </form>
-            </section>
+           
             <ul>
                {listedIngredients}
             </ul>

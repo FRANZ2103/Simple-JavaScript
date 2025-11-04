@@ -86,3 +86,7 @@ gap: 11px;
 main{
     padding: 30px 10px 30px;
 }
+fieldset{
+    display: flex;
+    flex-direction: column;
+}

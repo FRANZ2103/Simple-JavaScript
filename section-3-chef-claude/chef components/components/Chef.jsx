@@ -9,21 +9,27 @@ export default function Chef(){
 
     function addIngredient(formData){ 
         const fieldIngredient = formData.get("ingredient")
-        const description= formData.get("description")
         setIngredients(()=>[...ingredients,fieldIngredient])
-        console.log(description)
+        const emplo = formData.get("employmentStatus")
+        console.log(emplo)    
+        
+
        }
-      
+       
        
     return(
         <main>
             <form className="input-section" action={addIngredient}>
                 <input className="input-field" type="text" placeholder="e.g. oregano" name="ingredient"/>
                 <button className="add-ingredient-btn">Add Ingredient</button>
-                <label>
-                    <textarea name="description"></textarea>
-                    {/* Text area not relevant */}
-                </label>
+                <br/>
+                <fieldset>
+                    <legend>Employment Status</legend>
+                    <label><input type="radio" name="employmentStatus"  value="Employed"/>Employed</label>
+                    <label><input type="radio" name="employmentStatus" value="Unemployed"/>Unemployed</label>
+                    <label><input type="radio" name="employmentStatus" value="Part-time"/>Part-time</label>
+                </fieldset>
+           
             </form>
            
             <ul>

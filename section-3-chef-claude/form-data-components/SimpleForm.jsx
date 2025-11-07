@@ -35,6 +35,17 @@ export default function SimpleForm(){
                 <label><input type="checkbox" name="chckBox" value="Gluten-free"></input>Gluten-free</label>
             </fieldset>
             
+            <label htmlFor="dropDown">Select your Color</label>
+            <select id="dropDown" required defaultValue="" name="dropDown">
+                <option  value=""disabled>--Choose your Colors-- </option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="indigo">Indigo</option>
+                <option value="violet">Violet</option>
+            </select>
             <button className="submitBTN" id="submitBTN">Submit Form</button>
 
         </form>

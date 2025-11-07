@@ -3,8 +3,11 @@ export default function SimpleForm(){
     function handleAction(formData){
         const log = Object.fromEntries(formData)
         const chckBox = formData.getAll("chckBox")
-        console.log(log)
-        console.log(chckBox)
+        const allData = {
+            ...log,
+            chckBox
+        }
+        console.log(allData)
     }
 
     return(

@@ -90,3 +90,23 @@ fieldset{
     display: flex;
     flex-direction: column;
 }
+
+.get-recipe-container{
+    background-color:  #F0EFEB;
+    padding: 28px 42px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 594px;
+    border-radius: 8px;
+}
+
+.get-recipe-container > button{
+    background: #D17557;
+    width: 115px;
+    height: 38px;
+    border-radius: 6px;
+    color: white;
+    border: none;
+}

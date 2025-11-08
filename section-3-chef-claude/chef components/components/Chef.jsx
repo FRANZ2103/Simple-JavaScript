@@ -5,57 +5,36 @@ export default function Chef(){
    const listedIngredients = ingredients.map((ingredient) =>(
         <li key={ingredient}> {ingredient} </li>
     ))
-
+    
 
     function addIngredient(formData){ 
         const fieldIngredient = formData.get("ingredient")
         setIngredients(()=>[...ingredients,fieldIngredient])
-        const emplo = formData.get("employmentStatus")
-        console.log(emplo)            
-        const diet = formData.getAll("diet")
-        console.log(diet)            
-        const color = formData.get("color")
-        console.log(color)            
-
        }
-       
-       
+    const [messages, setMessages] = React.useState([1,2])
+    let msg
+    function evaluateMessages(msg){
+        if (messages.length === 1){
+            msg = "You have 1 unread message"
+        } else if(messages.length > 0){
+            msg =` You have ${messages.length} messages `
+        } else{
+            msg = "You have no messages"
+        }
+        return msg
+
+    }
     return(
         <main>
             <form className="input-section" action={addIngredient} >
                 <input className="input-field" type="text" placeholder="e.g. oregano" name="ingredient"/>
                 <button className="add-ingredient-btn">Add Ingredient</button>
-                <br/>
-                <fieldset>
-                    <legend>Employment Status</legend>
-                    <label><input type="radio" name="employmentStatus"  value="Employed"/>Employed</label>
-                    <label><input type="radio" name="employmentStatus" value="Unemployed"/>Unemployed</label>
-                    <label><input type="radio" name="employmentStatus" value="Part-time"/>Part-time</label>
-                </fieldset>
-                <fieldset>
-                    <legend>Dietary restrictions</legend>
-                    <label><input type="checkbox" name="diet"  value="Kosher"/>Kosher</label>
-                    <label><input type="checkbox" name="diet" value="Gluten-free"/>Gluten-free</label>
-                    <label><input type="checkbox" name="diet" value="Vegan"/>Vegan</label>
-                </fieldset>
-                
-                <label htmlFor="color"> Favorite color
-                <fieldset>
-                    <select name="color" id="color" required defaultValue="">
-                        <option value="" disabled>-- Choose Color--</option>
-                        <option value="red">Red</option>
-                        <option value="orange">Orange</option>
-                        <option value="yellow">Yellow</option>
-                        <option value="green">Green</option>
-                        <option value="blue">Blue</option>
-                        <option value="indigo">Indigo</option>
-                        <option value="violet">Violet</option>
-                    </select>
-                </fieldset> 
-            </label>
-           
+              
             </form>
-           
+           <section className="Conditional Rendering"> 
+            {/* {messages.length === 1 ? <h1>You have 1 unread message</h1> : messages ? <p>You have {messages.length} unread messages</p> : <p>No messages</p>} */}
+            <h1>{ evaluateMessages()}</h1>
+           </section>
             <ul>
                {listedIngredients}
             </ul>

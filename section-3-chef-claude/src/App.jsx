@@ -1,14 +1,21 @@
-import { createRoot } from "react-dom/client";
-import ChefHeader from "../chef components/components/ChefHeader";
-import Chef from "../chef components/components/Chef";
+import React from "react";
+import padsData from "../sound pad components/pads";
+import '../data-passing-components/SoundPadsChallenge/pads.css'
+// const [pads,setPads] = React.useState(padsData)
+const padsJSData = padsData.map((pdata)=>{
+  return(
+    <button key={pdata.id}/>
+    // console.log(pdata.id)
+  )
+})
 
-import Contact from "../contact-components/Contact"
-import SimpleForm from "../form-data-components/SimpleForm";
-createRoot(document.getElementById("root")).render(
-  <>
-  <ChefHeader/>
-  <Chef/>
-  </>
-)
+export default function App(){
+  const [pads,setPads] = React.useState(padsData)
+  return (
 
-export default  App()
+
+    <div className="pads-container">
+    {padsJSData}
+    </div>
+  )
+}

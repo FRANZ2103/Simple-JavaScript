@@ -26,7 +26,6 @@ button {
     border-radius: 5px;
     cursor: pointer;
     box-sizing: border-box;
-    background-color: buttonface;
     margin: 0em 0em 0em 0em;
     padding-block: 1px;
     padding-inline: 6px;
@@ -34,5 +33,9 @@ button {
     border-style: outset;
     border-color: buttonborder;
     border-image: initial;
-    
+    opacity: 0.1;
+}
+
+button.on{
+    opacity: 1;
 }

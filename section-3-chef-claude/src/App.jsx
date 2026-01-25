@@ -5,21 +5,21 @@ import Pads from "../data-passing-components/Pads";
 
 
 export default function App(props){
-  const padRender = padsData.map((toPass=>{
-    return(
-      <Pads
-      key={toPass.id}
-      color={toPass.color}
-      power={toPass.on}
-      
-      />
-    )
-  }))
+//  need to map on JS file to render Pads.jsx multiple times
+const padRender = padsData.map((pDataFromJS)=>{
+  return(
+    <Pads
+    key={pDataFromJS.id}
+    power={pDataFromJS.on}
+    color={pDataFromJS.color}
+    whichPad={pDataFromJS.id}
+    
+    />
+  )
+})
   return (
-
-
     <div className="pads-container">
-      {padRender }
+    {padRender}
     </div>
   )
 }

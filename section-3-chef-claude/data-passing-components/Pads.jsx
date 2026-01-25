@@ -1,19 +1,33 @@
-import React from "react"
+import React from "react";
+
+// need to know on, and color
+//next is switching on off
+// need to initalize a state setter
+//need to add toggle action 
+
 
 export default function Pads(props){
     const [on, setOn] = React.useState(props.power)
-    function toggleClick(){
-        setOn (prevOn => !prevOn)
+    function toggleAction(){
+        setOn(prevOn =>
+            //get prev value
+            prevOn = !prevOn
+        )
+        console.log(props.whichPad)
     }
-    console.log(on)
     return(
         <>
-        <button
-        key={props.id}
-        style={{backgroundColor: props.color}}
-        className={on ? "on": null}
-        onClick={toggleClick}
-        ></button>
+        <button 
+        style={
+            {
+                backgroundColor:props.color
+            }
+        }
+        className={
+            on ? "on": null
+        }
+        onClick={toggleAction}
+        > </button>
         </>
     )
 }

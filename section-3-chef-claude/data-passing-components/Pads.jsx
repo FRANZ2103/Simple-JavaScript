@@ -5,6 +5,7 @@ export default function Pads(props){
     function toggleClick(){
         setOn (prevOn => !prevOn)
     }
+    console.log(on)
     return(
         <>
         <button

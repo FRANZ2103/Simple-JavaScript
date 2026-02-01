@@ -13,7 +13,7 @@ export default function Pads(props){
             //get prev value
             prevOn = !prevOn
         )
-        console.log(props.whichPad)
+        console.log("props.whichPad")
     }
     return(
         <>

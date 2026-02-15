@@ -5,39 +5,42 @@ import Pads from "../data-passing-components/Pads";
 
 export default function App(props){
   const [pads,setPads] = React.useState(padsData)
-//     Challenge:
-// Call setPads to update the state of the one pad that was clicked. 
-// Map over the previous pads array, and if the current item you're iterating over has the same id as the 'id' passed
-// to this function, then return a new object with the 'ons value
-// set to the opposite of what it was before.
-// Otherwise (if the ids don't match),
-// just return the previous
-// item as it was, unchanged.'
   
   function appToggle(whichPad){
-//think in data, not components
 
-//I must update the on data
+    console.log("Sanity Test")
+    console.log(whichPad)
+    //Theory, update the data
+
+
+
+
+
+
 setPads( prevPad => prevPad.map(pad=>{
   if (pad.id === whichPad){
+    console.log("Match test reached")
+    console.log(pad.id + " = " + whichPad)
+    console.log(pad.on)
     return{
-    ...pad,
-    on: !pad.on}
+    // ...pad,
+
+    }
   }return pad
 })
 )
    
   }
-
-const padRender = padsData.map((pDataFromJS)=>{
+// Render all pad buttons initially
+const padRender = pads.map((pad)=>{
   return(
     <Pads
-    key={pDataFromJS.id}
-    power={pDataFromJS.on}
-    color={pDataFromJS.color}
-    whichPad={pDataFromJS.id}
+    key={pad.id}
+    power={pad.on}
+    color={pad.color}
+    whichPad={pad.id}
     onPress={appToggle}
-    allData = {pDataFromJS}
+    allData = {pad}
     
     />
   )

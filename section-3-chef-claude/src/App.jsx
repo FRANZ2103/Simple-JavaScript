@@ -4,47 +4,46 @@ import '../data-passing-components/SoundPadsChallenge/pads.css'
 import Pads from "../data-passing-components/Pads";
 
 export default function App(props){
-  const [pads,setPads] = React.useState(padsData)
-  
-  function appToggle(whichPad){
-
-    console.log("Sanity Test")
-    console.log(whichPad)
-    //Theory, update the data
+//For later, we need the toggle pad to:
+// detect the whichpad id, once matched, switch the value
 
 
+  const [pads,setPads] = React.useState(padsData)// You already used the JS File for initlazation here
+ // After that, render using the pads above
 
-
-
-
-setPads( prevPad => prevPad.map(pad=>{
-  if (pad.id === whichPad){
-    console.log("Match test reached")
-    console.log(pad.id + " = " + whichPad)
-    console.log(pad.on)
-    return{
-    // ...pad,
-
-    }
-  }return pad
-})
-)
-   
-  }
-// Render all pad buttons initially
-const padRender = pads.map((pad)=>{
-  return(
-    <Pads
-    key={pad.id}
-    power={pad.on}
-    color={pad.color}
-    whichPad={pad.id}
-    onPress={appToggle}
-    allData = {pad}
+function togglePad(whichPad){
+  console.log("Hello World")
+  console.log(whichPad)
+  // map first?
+  //state settir, then sa loob get prev value, return => prevpad na mapped nung pads. 
+  //Afterwards, don sa loob ung if statement
+  setPads (prevPads =>prevPads.map(pad=>{
     
-    />
-  )
-})
+    // console.log(pad.id)
+    if (whichPad === pad.id){
+      console.log(pad.id + "" + whichPad) //Match found confirmer
+      return {...pad, on: !pad.on      }
+    }else
+{return pad
+  
+}
+
+}))
+  
+}
+ const padRender = pads.map(pads=>
+  //pass the props
+  <Pads
+  key = {pads.id}
+  power = {pads.on}
+  color = {pads.color}
+  whichPad ={pads.id}
+  onPress = {togglePad}
+
+  
+  />
+
+ )
   return (
     <div className="pads-container">
     {padRender}

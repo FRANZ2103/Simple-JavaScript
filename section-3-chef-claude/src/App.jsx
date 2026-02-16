@@ -14,7 +14,15 @@ function togglePad(whichPad){
     }
     else{
       return pad
-  
+  /**
+   * Update the rendering of pad sort of (setPads) from its current value (prevPads)
+   * To do this, we take prevPads as input => output the new array by mapping prevPads and
+   * for each pad object we use the if else logic attached. If it is the target id (whichPad),
+   * copy all of it's current properties and alter the on property. Else, if it is not the target pad, 
+   * return the same.
+   * 
+   * Doing this, will completely replace the target pad. It will use most of the current properties save for one
+   */
 }
 
 }))

@@ -7,13 +7,16 @@ export default function App(props){
   const [pads,setPads] = React.useState(padsData)// You already used the JS File for initlazation here
 
 function togglePad(whichPad){
-  setPads (prevPads =>prevPads.map(pad=>{
-    if (whichPad === pad.id){
-      console.log(pad.id + "" + whichPad)
-      return {...pad, on: !pad.on      }
-    }
-    else{
-      return pad
+  setPads (prevPads =>prevPads.map(pad=>
+    // if (whichPad === pad.id){
+    //   console.log(pad.id + "" + whichPad)
+    //   return {...pad, on: !pad.on      }
+    // }
+    // else{
+    //   return pad
+    whichPad === pad.id ? {...pad, on: !pad.on} : pad
+
+
   /**
    * Update the rendering of pad sort of (setPads) from its current value (prevPads)
    * To do this, we take prevPads as input => output the new array by mapping prevPads and
@@ -22,10 +25,12 @@ function togglePad(whichPad){
    * return the same.
    * 
    * Doing this, will completely replace the target pad. It will use most of the current properties save for one
+   * 
+   * If you are using ternary, either do not envelope the statement using { } or else add return at the beginning
    */
-}
 
-}))
+
+))
   
 }
  const padRender = pads.map(pads=>

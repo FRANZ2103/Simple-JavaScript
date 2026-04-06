@@ -21,7 +21,7 @@ export default function Chef(props){
         // Function for adding an ingredient to the listed data
         // Pass this to child then parent?
        }
-    
+    console.log(import.meta.env.VITE_HF_API_KEY)
        
     return(
         <main>

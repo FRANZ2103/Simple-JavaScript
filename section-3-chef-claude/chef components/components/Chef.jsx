@@ -5,7 +5,7 @@ import IngredientsList from "./IngredientsList";
 import { getRecipeFromMistral } from "./ai";
 
 export default function Chef(props){
-   const [ingredients,setIngredients] = React.useState(["all the main spices", "pasta" ,"ground beef" ,"tomato paste"])
+   const [ingredients,setIngredients] = React.useState([])
 
    
    const [recipe, setRecipe] = React.useState("Test")
@@ -22,6 +22,9 @@ async function handleRecipe() {
     setRecipe(airecipe)
     // console.log(recipe) //Recipe state after setting it to the generated recipe
     
+}
+function clearRecipe(){
+    setRecipe("")
 }
     
     const [recipeShown, setRecipeShown] = React.useState(false)
@@ -50,6 +53,7 @@ async function handleRecipe() {
             </form>
             {ingredients.length > 0 && <IngredientsList ingredients= {ingredients} toggleShowRecipe ={handleRecipe}/>}
 
+                <button className="add-ingredient-btn" onClick={clearRecipe}>Clear Recipe</button>
           
                     <ClaudeRecipe  generatedRecipe = {recipe}/>
                 

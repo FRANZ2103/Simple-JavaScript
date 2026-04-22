@@ -1,25 +1,15 @@
-import React from "react";
-import { getRecipeFromMistral } from "./ai";
 
-    
-    export default function ClaudeRecipe(){
-        
-const [recipe, setRecipe] = React.useState("")
-
-async function handleRecipe() {
-    const generatedRecipe  = await getRecipeFromMistral(ingredients)
-    console.log(generatedRecipe)
-    setRecipe(generatedRecipe)
-}
-
+    export default function ClaudeRecipe(props){
+        console.log("ClaudeRecipe component received recipe prop:", props.recipe) // Log the received prop
 
     return(
         <>
         <section>
                     {/* <h2>Chef Claude Recommends:</h2> */}
-                    <h1>{recipe}</h1>
+                    {/* <h1>{props.recipe}</h1> */}
                     <article className="suggested-recipe-container" aria-live="polite">
-                        <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
+                        <p>{props.generatedRecipe}</p>
+                        {/* <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
                         <h3>Beef Bolognese Pasta</h3>
                         <strong>Ingredients:</strong>
                         <ul>
@@ -45,7 +35,7 @@ async function handleRecipe() {
                             <li>While the sauce is simmering, cook the pasta according to the package instructions. Drain the pasta and return it to the pot.</li>
                             <li>Add the Bolognese sauce to the cooked pasta and toss to combine.</li>
                             <li>Serve hot, garnished with additional fresh basil or grated Parmesan cheese if desired.</li>
-                        </ol>
+                        </ol> */}
                     </article>
                 </section>
         </>

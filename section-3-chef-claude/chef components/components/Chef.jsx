@@ -7,11 +7,22 @@ import { getRecipeFromMistral } from "./ai";
 export default function Chef(props){
    const [ingredients,setIngredients] = React.useState(["all the main spices", "pasta" ,"ground beef" ,"tomato paste"])
 
-async function handleRecipe() {
-    const recipe = await getRecipeFromMistral(ingredients)
-    console.log(recipe)
-}
    
+   const [recipe, setRecipe] = React.useState("Test")
+   console.log(recipe) // Initial recipe state
+
+   
+React.useEffect(() => {
+    console.log("Updated recipe:", recipe)
+}, [recipe])
+   
+async function handleRecipe() {
+    const airecipe = await getRecipeFromMistral(ingredients)
+    // console.log("Mistral" + airecipe) //Actual recipe data from Mistral
+    setRecipe(airecipe)
+    // console.log(recipe) //Recipe state after setting it to the generated recipe
+    
+}
     
     const [recipeShown, setRecipeShown] = React.useState(false)
     function toggleShowRecipe(){
@@ -31,6 +42,7 @@ async function handleRecipe() {
        
     return(
         <main>
+            <center><p>Enter your Ingredients in the field below:</p></center>
             <form className="input-section" action={addIngredient} >
                 <input className="input-field" type="text" placeholder="e.g. oregano" name="ingredient"/>
                 <button className="add-ingredient-btn">Add Ingredient</button>
@@ -38,9 +50,9 @@ async function handleRecipe() {
             </form>
             {ingredients.length > 0 && <IngredientsList ingredients= {ingredients} toggleShowRecipe ={handleRecipe}/>}
 
-                {recipeShown ? 
-                    <ClaudeRecipe/>
-                : null}
+          
+                    <ClaudeRecipe  generatedRecipe = {recipe}/>
+                
         </main>
     )
 }

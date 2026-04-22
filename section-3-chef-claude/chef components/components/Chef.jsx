@@ -2,9 +2,15 @@ import { useState } from "react";
 import React from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientsList from "./IngredientsList";
+import { getRecipeFromMistral } from "./ai";
 
 export default function Chef(props){
    const [ingredients,setIngredients] = React.useState(["all the main spices", "pasta" ,"ground beef" ,"tomato paste"])
+
+async function handleRecipe() {
+    const recipe = await getRecipeFromMistral(ingredients)
+    console.log(recipe)
+}
    
     
     const [recipeShown, setRecipeShown] = React.useState(false)
@@ -21,7 +27,7 @@ export default function Chef(props){
         // Function for adding an ingredient to the listed data
         // Pass this to child then parent?
        }
-    console.log(import.meta.env.VITE_HF_API_KEY)
+    // console.log(import.meta.env.VITE_HF_API_KEY)
        
     return(
         <main>
@@ -30,7 +36,7 @@ export default function Chef(props){
                 <button className="add-ingredient-btn">Add Ingredient</button>
               
             </form>
-            {ingredients.length > 0 && <IngredientsList ingredients= {ingredients} toggleShowRecipe ={toggleShowRecipe}/>}
+            {ingredients.length > 0 && <IngredientsList ingredients= {ingredients} toggleShowRecipe ={handleRecipe}/>}
 
                 {recipeShown ? 
                     <ClaudeRecipe/>

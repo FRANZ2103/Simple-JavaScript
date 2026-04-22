@@ -1,8 +1,23 @@
-export default function ClaudeRecipe(){
+import React from "react";
+import { getRecipeFromMistral } from "./ai";
+
+    
+    export default function ClaudeRecipe(){
+        
+const [recipe, setRecipe] = React.useState("")
+
+async function handleRecipe() {
+    const generatedRecipe  = await getRecipeFromMistral(ingredients)
+    console.log(generatedRecipe)
+    setRecipe(generatedRecipe)
+}
+
+
     return(
         <>
         <section>
-                    <h2>Chef Claude Recommends:</h2>
+                    {/* <h2>Chef Claude Recommends:</h2> */}
+                    <h1>{recipe}</h1>
                     <article className="suggested-recipe-container" aria-live="polite">
                         <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
                         <h3>Beef Bolognese Pasta</h3>
